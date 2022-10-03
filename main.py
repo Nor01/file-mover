@@ -1,10 +1,11 @@
 from PIL import Image
 import os
+import shutil
 
-downloadFolder = "C:/Users/maino/Downloads/"
-picturesFolder = "E:/Downloads/Pictures/"
-musicFolder = "E:/Downloads/Music/"
-videosFolder = "E:/Downloads/videos/"
+downloadFolder = "/Users/maino/Downloads/"
+picturesFolder = "/Users/maino/Downloads/Pictures/"
+
+videosFolder = "/Users/maino/Downloads/videos/"
 
 if __name__ == "__main__":
     for filename in os.listdir(downloadFolder):
@@ -14,10 +15,16 @@ if __name__ == "__main__":
             picture = Image.open(downloadFolder + filename)
             picture.save(downloadFolder + filename, optimize=True,quality=60)
             os.remove(downloadFolder + filename)
-            print(name + ": " + extension)
-        
+
         if extension in [".mp3"]:
-            os.rename(downloadFolder + filename, musicFolder + filename)
+            musicFolder = "/Users/maino/Downloads/Music/"
+            os.rename(downloadFolder+ filename, musicFolder+ filename)
         
         if extension in [".mp4"]:
-            os.rename(downloadFolder + filename, videosFolder + filename)
+            videosFolder = "/Users/maino/Downloads/Videos/"
+            os.rename(downloadFolder+ filename, videosFolder+ filename)
+
+
+        
+        # if extension in [".mp4"]:
+        #     os.rename(downloadFolder + filename, videosFolder + filename)
